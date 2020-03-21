@@ -1,0 +1,7 @@
+{
+  "name": "lista_contactos",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
