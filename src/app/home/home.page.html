@@ -1,20 +1,83 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header translucent>
+  <ion-toolbar color="danger">
     <ion-title>
-      Blank
+      Lista de contactos
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <h2>Agregar contacto</h2>
 
+  <ion-item>
+    <ion-label position="floating">Nombre Completo</ion-label>
+    <ion-input #nombre></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Telefono</ion-label>
+    <ion-input #telefono maxlength="10" minlength="10"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Email</ion-label>
+    <ion-input #email></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-item>
+      <ion-label>Cumpleaños</ion-label>
+      <ion-datetime #fecha displayFormat="MM DD YY" placeholder="Seleccionar Fecha" (ionChange)="cambiofecha($event)">
+      </ion-datetime>
+    </ion-item>
+    <ion-label position="floating">Notas</ion-label>
+    <ion-input #notas></ion-input>
+  </ion-item>
+
+
+  <ion-radio-group (ionChange)="event1($event)" value="h">
+    <ion-list-header>
+      <h2>Sexo</h2>
+    </ion-list-header>
+    <ion-item lines="none">
+      <ion-label>Hombre</ion-label>
+      <ion-radio slot="start" color="primary" value="h"></ion-radio>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label>Mujer</ion-label>
+      <ion-radio slot="start" color="primary" value="m"></ion-radio>
+    </ion-item>
+  </ion-radio-group>
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-button (click)=" sex(); addPerson(nombre.value,telefono.value,email.value,notas.value,fecha.value);">
+      <ion-icon name="add-circle-outline"></ion-icon>
+    </ion-button>
+  </div>
+
+  <div class="centrar">
+    <div *ngIf="!contacto">
+      <h2>No se han añadido contactos</h2>
+    </div>
+    <div *ngIf="contacto">
+      <h2>Mis contactos</h2>
+      <ion-item>
+        <ion-label>Ver notas</ion-label>
+        <ion-toggle slot="end" color="light" (ionChange)="showNote()"></ion-toggle>
+      </ion-item>
+
+      <ion-card *ngFor="let data of arrPersonas" [ngClass]="{'blue':data.strSexo,'pink': !data.strSexo}">
+        <ion-card-header>
+          <ion-card-subtitle>
+            <p>{{data.strTelefono}}</p>
+          </ion-card-subtitle>
+          <ion-card-title>{{data.strNombre}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>{{data.strEmail}}</ion-card-content>
+        <ion-card-content>{{data.strfecha}}</ion-card-content>
+        <ion-item>
+          <ion-card-content id="notas" *ngIf="showNotas" slot="start">{{data.strNotas}}</ion-card-content>
+          <ion-button color="danger" slot="end" (click)="presentAlertConfirm(this.data,this.data.strNombre)">
+            <ion-icon name="close"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-card>
+    </div>
   </div>
 </ion-content>

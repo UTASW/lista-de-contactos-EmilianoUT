@@ -1,11 +1,6 @@
 #container {
   text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  width: 100%;
 }
 
 #container strong {
@@ -13,13 +8,8 @@
   line-height: 26px;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+#container ion-button{
+  width: 100%;
 }
 
 #container a {
@@ -28,4 +18,33 @@
 
 ion-content ion-toolbar {
   --background: translucent;
+}
+
+.blue{
+  background-color: rgb(230, 9, 119);
+  color: black;
+}
+
+.pink{
+  background-color: pink;
+  color: black;
+}
+
+
+  ion-input[type=number]::-webkit-outer-spin-button,
+  ion-input[type=number]::-webkit-inner-spin-button {
+
+    -webkit-appearance: none;
+
+    margin: 0;
+
+}
+ion-input[type=number] {
+
+  -moz-appearance:textfield;
+
+}
+
+.centrar{
+  text-align: center;
 }
