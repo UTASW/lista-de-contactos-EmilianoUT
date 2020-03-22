@@ -1,7 +1,8 @@
 {
   "name": "lista_contactos",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

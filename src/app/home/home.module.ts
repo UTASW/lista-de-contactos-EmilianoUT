@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
 
+import { NgPipesModule } from 'ngx-pipes';
+
 @NgModule({
   imports: [
     CommonModule,
